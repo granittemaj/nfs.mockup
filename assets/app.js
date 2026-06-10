@@ -225,15 +225,22 @@ function injectHeader(page){
    return '<div class="nav-item"><a class="nav-link'+(n.page===page?' active':'')+'" href="'+n.href+'">'+n.label+'</a></div>';
  }).join('');
  var mob=NAV.map(function(n){
-   if(n.children){return '<div class="mm-group">'+n.label+'</div>'+n.children.filter(function(c){return !c.divider;}).map(function(c){return '<a class="sub" href="'+c.href+'">'+c.label+'</a>';}).join('');}
-   return '<a href="'+n.href+'"'+(n.page===page?' class="active"':'')+'>'+n.label+'</a>';
+   if(n.children){return '<div class="mm-group">'+n.label+'</div>'+n.children.filter(function(c){return !c.divider;}).map(function(c){return '<a class="mm-sub" href="'+c.href+'">'+c.label+'</a>';}).join('');}
+   return '<a class="mm-link'+(n.page===page?' active':'')+'" href="'+n.href+'">'+n.label+'</a>';
  }).join('');
  var html='<div class="wrap nav">'+
    '<div class="left"><a class="brand" href="index.html"><span class="flame">'+FLAME+'</span><span class="name">Not For Sale</span></a></div>'+
    '<div class="center"><nav class="nav-links">'+center+'</nav></div>'+
    '<div class="right"><a class="btn btn-ink" href="#">Donate</a>'+
    '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>'+
-   '</div><div class="mobile-menu" id="mobileMenu">'+mob+'<a class="btn btn-orange" href="#">Donate</a></div>';
+   '</div>'+
+   '<div class="mm-scrim" id="mmScrim"></div>'+
+   '<aside class="mobile-menu" id="mobileMenu" aria-label="Menu">'+
+     '<div class="mm-top"><span class="brand"><span class="flame">'+FLAME+'</span><span class="name">Not For Sale</span></span>'+
+       '<button class="mm-close" id="mmClose" aria-label="Close menu"><span></span><span></span></button></div>'+
+     '<nav class="mm-nav">'+mob+'</nav>'+
+     '<a class="btn btn-orange mm-donate" href="#">Donate</a>'+
+   '</aside>';
  var h=document.getElementById('site-header'); if(h){var el=document.createElement('header');el.id='hdr';el.innerHTML=html;h.replaceWith(el);}
 }
 function injectNewsletter(){
@@ -436,10 +443,13 @@ function init(){
  injectHeader(page); injectNewsletter(); injectFooter();
  document.querySelectorAll('.flame').forEach(function(fl){if(!fl.innerHTML.trim())fl.innerHTML=FLAME;});
  // mobile menu
- var burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+ var burger=el('burger'),menu=el('mobileMenu'),scrim=el('mmScrim'),closeb=el('mmClose');
+ function setMenu(o){if(menu)menu.classList.toggle('open',o);if(scrim)scrim.classList.toggle('open',o);if(burger){burger.classList.toggle('x',o);burger.setAttribute('aria-expanded',o);}document.body.classList.toggle('lock',o);}
  if(burger&&menu){
-   burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.classList.toggle('x',o);burger.setAttribute('aria-expanded',o);document.body.classList.toggle('lock',o);});
-   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');burger.classList.remove('x');document.body.classList.remove('lock');});});
+   burger.addEventListener('click',function(){setMenu(!menu.classList.contains('open'));});
+   if(closeb)closeb.addEventListener('click',function(){setMenu(false);});
+   if(scrim)scrim.addEventListener('click',function(){setMenu(false);});
+   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
  }
  if(page==='home')renderHome();
  else if(page==='projects')renderProjects();

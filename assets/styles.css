@@ -506,3 +506,28 @@ footer.site{background:var(--ink);color:#bdb6ab;padding:var(--sec) 0 36px;margin
 .themechips a:hover{border-color:var(--nfs);color:var(--nfs)}
 @media(max-width:860px){.logogrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.logogrid{grid-template-columns:1fr}}
+
+/* =========================================================================
+   v3 — REFINED MOBILE MENU (right-side panel + scrim) overrides v1 overlay
+   ========================================================================= */
+.mm-scrim{position:fixed;inset:0;background:rgba(20,18,16,.45);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;z-index:54}
+.mm-scrim.open{opacity:1;visibility:visible}
+.mobile-menu{position:fixed;top:0;right:0;left:auto;bottom:0;height:100%;width:min(348px,86vw);background:var(--paper);border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(20,18,16,.16);transform:translateX(100%);transition:transform .42s var(--ease);z-index:56;display:flex;flex-direction:column;padding:18px 26px 26px;gap:0;overflow-y:auto}
+.mobile-menu.open{transform:none}
+.mm-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.mm-top .brand{display:flex;align-items:center;gap:10px}
+.mm-top .brand .flame{width:30px;height:30px}
+.mm-top .brand .flame svg{width:15px;height:15px}
+.mm-top .brand .name{font-family:var(--disp);font-weight:800;font-size:16px;letter-spacing:.02em;text-transform:uppercase}
+.mm-close{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer;position:relative;flex:0 0 auto;transition:border-color .2s,background .2s}
+.mm-close:hover{border-color:var(--ink);background:var(--band)}
+.mm-close span{position:absolute;top:50%;left:50%;width:15px;height:1.6px;background:var(--ink)}
+.mm-close span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)}
+.mm-close span:nth-child(2){transform:translate(-50%,-50%) rotate(-45deg)}
+.mm-nav{display:flex;flex-direction:column;padding-top:6px}
+.mobile-menu .mm-link{font-family:var(--disp);font-weight:600;font-size:19px;color:var(--ink);padding:13px 0;border-bottom:1px solid var(--line);transition:color .18s}
+.mobile-menu .mm-link:hover,.mobile-menu .mm-link.active{color:var(--nfs)}
+.mobile-menu .mm-group{font-family:var(--body);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:20px 0 4px;margin:0}
+.mobile-menu .mm-sub{font-family:var(--disp);font-weight:500;font-size:17px;color:var(--ink-2);padding:9px 0;border-bottom:1px solid var(--line);transition:color .18s}
+.mobile-menu .mm-sub:hover{color:var(--nfs)}
+.mm-donate{margin-top:22px;width:100%}
