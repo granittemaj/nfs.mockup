@@ -94,9 +94,63 @@ var SOCIAL=[
  {plat:"Facebook",t:"Charity, coupled with action",s:"David Batstone, Co-Founder"}
 ];
 var FAQ=[
- {q:"What is Ecocide?",a:"Ecocide is the large-scale destruction of ecosystems that severely harms the environment and threatens the lives and livelihoods of people who depend on it. <a href='#'>Learn more</a>"},
- {q:"What is Human Trafficking?",a:"Human trafficking is the use of force, fraud, or coercion to exploit people for labour or commercial gain. It is one of the fastest-growing criminal industries in the world. <a href='#'>Learn more</a>"},
- {q:"What is Social Innovation?",a:"Social innovation means building sustainable businesses and models that empower communities rather than exploit them, creating alternatives that prevent trafficking before it starts. <a href='#'>Learn more</a>"}
+ {q:"What is Ecocide?",a:"Ecocide is the large-scale destruction of ecosystems that severely harms the environment and threatens the lives and livelihoods of people who depend on it. <a href='explainer.html?t=ecocide'>Learn more</a>"},
+ {q:"What is Human Trafficking?",a:"Human trafficking is the use of force, fraud, or coercion to exploit people for labour or commercial gain. It is one of the fastest-growing criminal industries in the world. <a href='explainer.html?t=human-trafficking'>Learn more</a>"},
+ {q:"What is Social Innovation?",a:"Social innovation means building sustainable businesses and models that empower communities rather than exploit them, creating alternatives that prevent trafficking before it starts. <a href='explainer.html?t=social-innovation'>Learn more</a>"}
+];
+var EXPLAINERS={
+ "human-trafficking":{
+   title:"What is human trafficking?",
+   direct:"Human trafficking is the exploitation of people through force, fraud, or coercion for labor, sex, or other services. It is a form of modern-day slavery that affects millions worldwide.",
+   inDepth:["Human trafficking involves the recruitment, transportation, or harboring of individuals for the purpose of exploitation. Victims can be men, women, or children and are often coerced into work under inhumane conditions or exploited sexually.","Traffickers use threats, violence, deception, and manipulation to control their victims, hiding the abuse in plain sight."],
+   solutions:["Provides support and rehabilitation for survivors.","Dismantles trafficking networks.","Creates economic stability in impoverished communities as prevention.","Addresses environmental destruction in at-risk communities.","Raises global awareness through education and advocacy."],
+   summary:"Human trafficking is a modern form of slavery. Not For Sale combats it through rescue, survivor support, prevention, and economic development.",
+   related:[
+     {q:"What are the root causes of human trafficking?",a:"Poverty, environmental degradation, lack of education about traffickers, and systemic inequality often make individuals vulnerable."},
+     {q:"Who is most at risk of being trafficked?",a:"People facing poverty, displacement, conflict, or social exclusion, especially women and children, are at heightened risk."},
+     {q:"Is human trafficking happening in the U.S.?",a:"Yes. Trafficking occurs in every country, including the United States, across both labour and sex trafficking."}
+   ]
+ },
+ "ecocide":{
+   title:"What is ecocide?",
+   direct:"Ecocide is the large-scale destruction of ecosystems that severely harms the environment and threatens the lives and livelihoods of the people who depend on it.",
+   inDepth:["Deforestation, pollution, and resource theft strip communities of the land, water, and stability they rely on. When livelihoods collapse, people are forced into desperate situations that traffickers exploit.","Environmental destruction and human exploitation are deeply linked, which is why we treat them as one fight."],
+   solutions:["Protects ecosystems communities depend on.","Restores forests, soil, and biodiversity.","Builds sustainable, land-based livelihoods.","Reduces the displacement that fuels trafficking.","Advocates for ecocide to be recognised and prevented."],
+   summary:"Ecocide destroys the environments people rely on and drives vulnerability. Not For Sale protects ecosystems to break cycles of exploitation.",
+   related:[
+     {q:"How does ecocide affect people as well as nature?",a:"When ecosystems collapse, communities lose food, income, and security, increasing the risk of displacement and exploitation."},
+     {q:"Where is ecocide happening today?",a:"From deforestation to illegal mining and pollution, ecocide affects vulnerable communities across every continent."},
+     {q:"Can ecocide be prevented?",a:"Yes, through restoration, sustainable livelihoods, accountability for harmful supply chains, and stronger legal protections."}
+   ]
+ },
+ "social-innovation":{
+   title:"What is social innovation?",
+   direct:"Social innovation means building sustainable businesses and models that empower communities rather than exploit them, creating alternatives that prevent trafficking before it starts.",
+   inDepth:["Poverty and lack of opportunity fuel exploitation. Social innovation tackles that root cause by creating fair jobs, sustainable income, and community resilience.","These enterprises aren't just lifelines, they are engines of dignity and independence."],
+   solutions:["Creates fair jobs and sustainable income.","Funds survivor reintegration through enterprise.","Strengthens community resilience.","Reduces the conditions traffickers exploit.","Proves business can be a force for good."],
+   summary:"Social innovation builds the alternatives that make exploitation less likely, turning prevention into a self-sustaining model.",
+   related:[
+     {q:"How does social innovation fight human trafficking?",a:"By creating economic opportunity and stability, it removes the desperation that traffickers prey on."},
+     {q:"Why is social innovation important for sustainable change?",a:"It addresses root causes rather than symptoms, creating change that lasts beyond any single intervention."},
+     {q:"What does a social enterprise look like?",a:"From restaurants to consumer brands, these are real businesses whose profits and practices serve their communities."}
+   ]
+ }
+};
+var FAQLIST=[
+ {q:"What is Not For Sale's mission?",a:"Not For Sale is a global NGO fighting human trafficking and environmental exploitation through survivor support, prevention, and social enterprises designed to make social impact profitable. <a href='about.html'>Learn more about our work</a>."},
+ {q:"Can I report suspected human trafficking to Not For Sale?",a:"If someone is in immediate danger, contact local emergency services first. Not For Sale can point you toward the right reporting channels and anti-trafficking hotlines in your region."},
+ {q:"How can I contact someone at Not For Sale?",a:"Reach us through the contact form on this site, or via the email and social channels listed in the footer."},
+ {q:"How can I collaborate with Not For Sale?",a:"We partner with companies, NGOs, and individuals. See our Partners page or get in touch to explore working together."},
+ {q:"How can I get involved with Not For Sale's fundraising?",a:"You can donate, become a fundraiser, or run a campaign. Our team can provide tools and guidance to help you raise funds."},
+ {q:"How can I donate to Not For Sale?",a:"You can give securely online via the Donate button, or through the other methods listed on our donation page."},
+ {q:"Can I donate through Venmo?",a:"Yes, in supported regions. Check the donation page for the current list of accepted payment methods."},
+ {q:"How do I become a fundraiser for Not For Sale?",a:"Sign up through our fundraising platform and we'll provide a personal page plus resources to share with your network."},
+ {q:"How can I update my donation and card details?",a:"Existing donors can sign in to the donation account to manage recurring gifts and update payment details."},
+ {q:"Do you accept mail donations?",a:"Yes. Cheque donations can be mailed to our registered address, available on request from the team."},
+ {q:"Can I donate my stocks to Not For Sale?",a:"Yes, stock and securities gifts are welcome and can be tax-efficient. Contact us to arrange a transfer."},
+ {q:"Can my employer match my donation?",a:"Many employers match charitable gifts. Check with your HR team and we can provide any documentation needed."},
+ {q:"Are you involved in any US-based project work?",a:"Yes. Alongside our international programmes, we support prevention and survivor work in the United States."},
+ {q:"How can I keep up-to-date with Not For Sale?",a:"Subscribe to our newsletter and follow us on social media for the latest frontline reporting and updates."}
 ];
 var COUNTRIES=[
  ["Argentina","Americas"],["Bolivia","Americas"],["Brazil","Americas"],["Canada","Americas"],
@@ -165,8 +219,8 @@ function injectFooter(){
  f.outerHTML='<footer class="site"><div class="wrap">'+
   '<div class="fcols"><div><div class="fbrand"><span class="flame">'+FLAME+'</span><span class="name">Not For Sale</span></div>'+
   '<p class="fmute">A global movement fighting human trafficking through prevention, rescue, and reintegration since 2006.</p></div>'+
-  '<div><h5>About</h5><a href="about.html">About Us</a><a href="team.html">Our Team</a><a href="projects.html">Our Projects</a><a href="#">Donate</a></div>'+
-  '<div><h5>Causes</h5><a href="#">Human Trafficking</a><a href="#">Social Innovation</a><a href="#">Ecocide</a><a href="blog.html">News</a></div>'+
+  '<div><h5>About</h5><a href="about.html">About Us</a><a href="team.html">Our Team</a><a href="faq.html">FAQ</a><a href="#">Donate</a></div>'+
+  '<div><h5>Causes</h5><a href="explainer.html?t=human-trafficking">Human Trafficking</a><a href="explainer.html?t=social-innovation">Social Innovation</a><a href="explainer.html?t=ecocide">Ecocide</a><a href="news.html">News</a></div>'+
   '<div><h5>Follow Us</h5><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a><a href="#">Facebook</a></div></div>'+
   '<div class="fbot"><div>© Not For Sale 2026. All rights reserved.</div><div class="fmark">WE ARE NOT FOR SALE</div></div></div></footer>';
 }
@@ -262,6 +316,19 @@ function renderPartner(){
  if(rel){var more=PARTNERS.filter(function(p){return slug(p.name)!==sl;}).slice(0,3);
    rel.innerHTML=more.map(function(p){return '<a class="logo" href="partner.html?p='+slug(p.name)+'">'+scene("partner-"+p.name)+'<div class="wm">'+p.name+(p.sub?'<small>'+p.sub+'</small>':'')+'</div></a>';}).join('');}
 }
+function renderExplainer(){
+ var t=getParam('t')||'human-trafficking';
+ var d=EXPLAINERS[t]||EXPLAINERS['human-trafficking'];
+ if(document.title)document.title=d.title+' — Not For Sale';
+ var h=el('exTitle'); if(h)h.textContent=d.title;
+ var da=el('exDirect'); if(da)da.textContent=d.direct;
+ var img=el('exImg'); if(img)img.insertAdjacentHTML('afterbegin',scene(d.title,"Human Trafficking"));
+ var idp=el('exInDepth'); if(idp)idp.innerHTML=d.inDepth.map(function(p){return '<p>'+p+'</p>';}).join('');
+ var sol=el('exSolutions'); if(sol)sol.innerHTML=d.solutions.map(function(s,i){return '<div class="solution"><div class="num">'+("0"+(i+1)).slice(-2)+'</div><p>'+s+'</p></div>';}).join('');
+ var sum=el('exSummary'); if(sum)sum.innerHTML='<p>'+d.summary+'</p>';
+ buildFAQ(el('exRelated'),d.related,'+');
+}
+function renderFaq(){ buildFAQ(el('faqList'),FAQLIST,'+'); }
 function renderNews(){
  var NEWS=[FEAT].concat(LATEST).concat(ARTS);
  var active="All";
@@ -319,6 +386,8 @@ function init(){
  else if(page==='project')renderProject();
  else if(page==='partner')renderPartner();
  else if(page==='news')renderNews();
+ else if(page==='explainer')renderExplainer();
+ else if(page==='faq')renderFaq();
  else if(page==='blog')renderBlog();
 
  // reveals

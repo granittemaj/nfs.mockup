@@ -375,3 +375,33 @@ footer.site{background:var(--ink);color:#bdb6ab;padding:var(--sec) 0 36px;margin
 .factbox .v{font-weight:600;text-align:right}
 .factbox .btn{width:100%;margin-top:16px}
 @media(max-width:900px){.detail{grid-template-columns:1fr}.factbox{position:static}}
+
+/* =========================================================================
+   EXPLAINER ("What is X?") + FAQ LISTING templates
+   ========================================================================= */
+.exhero{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:center;padding:clamp(16px,3vw,30px) 0 0}
+.exhero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,6vw,76px);line-height:.96;letter-spacing:-.015em;margin-top:16px}
+.exhero .da{margin-top:26px}
+.exhero .da .lab{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:8px}
+.exhero .da p{font-size:clamp(16px,1.8vw,18px);line-height:1.6;color:var(--ink-2);max-width:46ch}
+.exhero .img{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--band)}
+.exhero .img svg{position:absolute;inset:0;width:100%;height:100%}
+.twocol{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(24px,4vw,56px);align-items:start;padding:var(--sec) 0;border-top:1px solid var(--line)}
+.twocol .sub{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3vw,34px);line-height:1.05}
+.twocol .body p{font-size:clamp(16px,1.8vw,18px);line-height:1.7;color:var(--ink-2);margin-bottom:16px}
+.solutions-sec{padding:var(--sec) 0;border-top:1px solid var(--line);text-align:center}
+.solutions-sec h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,3.6vw,40px);margin-bottom:28px}
+.solutions{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gap);text-align:left}
+.solution{background:var(--ink);color:#fff;border-radius:14px;padding:28px 26px;min-height:150px;display:flex;flex-direction:column;gap:14px;justify-content:space-between;transition:transform .3s var(--ease)}
+.solution:hover{transform:translateY(-4px)}
+.solution .num{font-family:var(--disp);font-weight:700;color:var(--nfs);font-size:24px}
+.solution p{font-size:16px;line-height:1.5}
+.exrelated{padding:var(--sec) 0;border-top:1px solid var(--line)}
+.exrelated .twocol{padding:0;border:none}
+
+.faqintro{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(28px,4vw,40px) 0;margin-top:18px}
+.faqintro h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.6vw,28px);color:var(--nfs);margin-bottom:14px}
+.faqintro p{font-size:clamp(16px,1.8vw,18px);line-height:1.7;color:var(--ink-2);margin-bottom:14px;max-width:78ch}
+.faqintro a{color:var(--nfs);text-decoration:underline}
+.faqlist{padding:10px 0 0}
+@media(max-width:860px){.exhero{grid-template-columns:1fr}.twocol{grid-template-columns:1fr;gap:16px}}
