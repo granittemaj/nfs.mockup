@@ -109,6 +109,9 @@ var COUNTRIES=[
  ["Myanmar","Asia-Pacific"],["Thailand","Asia-Pacific"],["Vietnam","Asia-Pacific"]
 ].map(function(r){return {name:r[0],region:r[1],slug:slug(r[0])};});
 var WORK=["Netherlands","Vietnam","South Africa","Mozambique","Thailand","Laos","Myanmar","Uganda","DR Congo","Peru","United States"];
+var FOCUS={Americas:["Survivor care","Prevention","Reforestation"],Africa:["Reintegration","Education","Agroforestry"],Europe:["Aftercare","Vocational training","Advocacy"],"Asia-Pacific":["Rescue","Safe homes","Education"]};
+var PROJECT_SINCE={Americas:"2014",Africa:"2011",Europe:"2013",
+"Asia-Pacific":"2012"};
 var FOUNDERS=[
  {name:"David Batstone",role:"President & Co-Founder",bio:["David is the co-founder and president of Not For Sale, a global organisation working to end human trafficking and environmental exploitation through systemic solutions and social enterprise. He is also co-founder and managing partner of Just Business, an international investment group that incubates mission-driven companies including REBBL and Dignita.",
  "He is Professor Emeritus at the University of San Francisco, an author of five books, a recipient of two national journalism awards, and a recipient of the Peace Award from the United Nations Women for Peace Association for his work advancing human dignity and justice."]},
@@ -123,15 +126,21 @@ var DIRECTORS=[
  {name:"Ntakamaze (TK) Nziyonvira",role:"Country Director",loc:"Uganda & DR Congo"}
 ];
 var PARTNERS=[
- {name:"AllSaints"},{name:"M2i Global",sub:"Minerals · Metals Initiatives"},{name:"Regenerate"},
- {name:"ABTC",sub:"American Battery"},{name:"Insured Nomads"},{name:"Dignitá",sub:"eat well, do good"},
- {name:"OHO"},{name:"Alex and Ani"},{name:"Boll & Branch"}
+ {name:"AllSaints",sub:"Fashion",sector:"Retail / Fashion",since:"2014",blurb:"A decade-long collaboration supporting ethical fashion, community programs, and the fight against human trafficking."},
+ {name:"M2i Global",sub:"Minerals · Metals Initiatives",sector:"Minerals & Metals",since:"2024",blurb:"Building responsible mineral supply chains while reducing the risk of forced labour and ecocide."},
+ {name:"Regenerate",sub:"Clean Technology",sector:"Technology",since:"2022",blurb:"Advancing clean energy, battery recycling, and sustainable solutions that reduce environmental harm."},
+ {name:"ABTC",sub:"American Battery",sector:"Clean Energy",since:"2023",blurb:"Supporting a circular battery economy and ethical resource recovery."},
+ {name:"Insured Nomads",sub:"Travel & Insurance",sector:"Insurance",since:"2021",blurb:"Protecting people on the move and funding frontline anti-trafficking work."},
+ {name:"Dignitá",sub:"eat well, do good",sector:"Social Enterprise",since:"2016",blurb:"Restaurants and training programs that help survivors rebuild lives and prevent trafficking."},
+ {name:"OHO",sub:"Lifestyle",sector:"Consumer",since:"2020",blurb:"A purpose-driven brand channelling sales into survivor support."},
+ {name:"Alex and Ani",sub:"Jewellery",sector:"Retail",since:"2015",blurb:"A purpose-driven charm partnership raising awareness and funds to fight human trafficking."},
+ {name:"Boll & Branch",sub:"Home",sector:"Retail / Home",since:"2019",blurb:"Advancing Fair Trade supply chains and global efforts to combat human trafficking."}
 ];
 
 /* =========================================================================
    SHARED CHROME
    ========================================================================= */
-var NAVITEMS=[["Home","index.html","home"],["Our Projects","projects.html","projects"],["About","about.html","about"],["Our Team","team.html","team"],["Partners","partners.html","partners"],["Blog","blog.html","blog"]];
+var NAVITEMS=[["Home","index.html","home"],["Our Projects","projects.html","projects"],["About","about.html","about"],["Our Team","team.html","team"],["Partners","partners.html","partners"],["News","news.html","news"]];
 function injectHeader(page){
  var links=NAVITEMS.map(function(n){return '<a href="'+n[1]+'"'+(n[2]===page?' class="active"':'')+'>'+n[0]+'</a>';}).join('');
  var mlinks=NAVITEMS.map(function(n){return '<a href="'+n[1]+'"'+(n[2]===page?' class="active"':'')+'>'+n[0]+'</a>';}).join('');
@@ -199,7 +208,7 @@ function renderProjects(){
  function draw(){var list=active==="All"?COUNTRIES:COUNTRIES.filter(function(d){return d.region===active;});
    var g=el('pgrid');g.innerHTML='';el('pcount').textContent=list.length+' programs';
    list.forEach(function(d,i){var f=FLAGS[d.slug]?'<img class="flag" src="'+FLAGS[d.slug]+'" alt="">':'';
-     var a=document.createElement('a');a.className='pcard';a.href='#';a.style.transitionDelay=((i%8)*45)+'ms';
+     var a=document.createElement('a');a.className='pcard';a.href='project.html?c='+d.slug;a.style.transitionDelay=((i%8)*45)+'ms';
      a.innerHTML='<div class="ph">'+scene(d.name)+f+'</div><div class="meta"><div class="reg">'+d.region+'</div><div class="name">'+d.name+'</div><span class="go">View projects →</span></div>';
      g.appendChild(a);io.observe(a);});}
  draw();
@@ -217,7 +226,56 @@ function renderTeam(){
    '<div class="role">'+p.role+'</div><h3>'+p.name+'</h3><div class="loc"><b>'+p.loc+'</b></div></div>';}).join('');
 }
 function renderPartners(){
- var g=el('logoGrid'); if(g)g.innerHTML=PARTNERS.map(function(p){return '<a class="logo" href="#">'+scene("partner-"+p.name)+'<div class="wm">'+p.name+(p.sub?'<small>'+p.sub+'</small>':'')+'</div></a>';}).join('');
+ var g=el('logoGrid'); if(g)g.innerHTML=PARTNERS.map(function(p){return '<a class="logo" href="partner.html?p='+slug(p.name)+'">'+scene("partner-"+p.name)+'<div class="wm">'+p.name+(p.sub?'<small>'+p.sub+'</small>':'')+'</div></a>';}).join('');
+}
+function getParam(k){try{return new URLSearchParams(location.search).get(k);}catch(e){return null;}}
+function renderProject(){
+ var sl=getParam('c')||'thailand';
+ var d=COUNTRIES.filter(function(c){return c.slug===sl;})[0]||COUNTRIES.filter(function(c){return c.slug==='thailand';})[0];
+ var ph=el('dheroPh'); if(ph)ph.innerHTML=scene(d.name);
+ var fr=el('pjFlag'); if(fr&&FLAGS[d.slug])fr.innerHTML='<img src="'+FLAGS[d.slug]+'" alt="">';
+ var k=el('pjKicker'); if(k)k.innerHTML='<span class="dash"></span>'+d.region+' · Programme';
+ var t=el('pjTitle'); if(t)t.textContent=d.name;
+ if(document.title)document.title=d.name+' — Not For Sale';
+ var focus=FOCUS[d.region]||[];
+ var ft=el('pjFocus'); if(ft)ft.innerHTML=focus.map(function(f){return '<span class="tag"><span class="dot"></span>'+f+'</span>';}).join('');
+ var fbR=el('fbRegion'); if(fbR)fbR.textContent=d.region;
+ var fbF=el('fbFocus'); if(fbF)fbF.textContent=focus.join(', ');
+ var fbS=el('fbSince'); if(fbS)fbS.textContent=PROJECT_SINCE[d.region]||'2012';
+ var rn=el('pjRegionName'); if(rn)rn.textContent=d.region;
+ var fig=el('pjFig'); if(fig)fig.insertAdjacentHTML('afterbegin',scene(d.name+'-field'));
+ var rel=el('pjRelated');
+ if(rel){var more=COUNTRIES.filter(function(c){return c.region===d.region&&c.slug!==d.slug;}).slice(0,4);
+   rel.innerHTML=more.map(function(c){var f=FLAGS[c.slug]?'<img class="flag" src="'+FLAGS[c.slug]+'" alt="">':'';
+     return '<a class="pcard in" href="project.html?c='+c.slug+'"><div class="ph">'+scene(c.name)+f+'</div><div class="meta"><div class="reg">'+c.region+'</div><div class="name">'+c.name+'</div><span class="go">View project →</span></div></a>';}).join('');}
+}
+function renderPartner(){
+ var sl=getParam('p')||'allsaints';
+ var d=PARTNERS.filter(function(p){return slug(p.name)===sl;})[0]||PARTNERS[0];
+ var ph=el('dheroPh'); if(ph)ph.innerHTML=scene("partner-"+d.name);
+ var t=el('pnTitle'); if(t)t.innerHTML=d.name+(d.sub?'<small>'+d.sub+'</small>':'');
+ if(document.title)document.title=d.name+' — Not For Sale Partner';
+ var l=el('pnLede'); if(l)l.textContent=d.blurb;
+ var fbSec=el('fbSector'); if(fbSec)fbSec.textContent=d.sector;
+ var fbSince=el('fbPartnerSince'); if(fbSince)fbSince.textContent=d.since;
+ var rel=el('pnRelated');
+ if(rel){var more=PARTNERS.filter(function(p){return slug(p.name)!==sl;}).slice(0,3);
+   rel.innerHTML=more.map(function(p){return '<a class="logo" href="partner.html?p='+slug(p.name)+'">'+scene("partner-"+p.name)+'<div class="wm">'+p.name+(p.sub?'<small>'+p.sub+'</small>':'')+'</div></a>';}).join('');}
+}
+function renderNews(){
+ var NEWS=[FEAT].concat(LATEST).concat(ARTS);
+ var active="All";
+ var fbox=el('newsFilters');
+ if(fbox){["All"].concat(Object.keys(CAT).filter(function(c){return c!=="Social Enterprise";})).forEach(function(c){
+   var b=document.createElement('button');b.className='chip'+(c==="All"?' on':'');b.textContent=c;
+   b.onclick=function(){active=c;[].forEach.call(fbox.children,function(x){x.classList.toggle('on',x.textContent===c);});draw();};fbox.appendChild(b);});}
+ function draw(){var list=active==="All"?NEWS:NEWS.filter(function(a){return a.cat===active;});
+   var g=el('newsGrid');if(!g)return;g.innerHTML='';var cnt=el('newsCount');if(cnt)cnt.textContent=list.length+' stories';
+   list.forEach(function(a){var g2=document.createElement('a');g2.className='art';g2.href='blog.html';
+     g2.innerHTML='<div class="ph">'+scene(a.title,a.cat)+(a.h<8?'<span class="new">New</span>':'')+'</div>'+
+      '<div class="b">'+tagHTML(a.cat)+'<div class="t">'+a.title+'</div>'+(a.dek?'<div class="dek">'+a.dek+'</div>':'')+
+      '<div class="am"><span>'+(a.when||rel(a.h))+'</span><span>'+a.read+' min read →</span></div></div>';g.appendChild(g2);});}
+ draw();
 }
 function renderBlog(){
  var bav=el('blogAuthorAv'); if(bav)bav.insertAdjacentHTML('afterbegin',avatar("Field Report"));
@@ -258,6 +316,9 @@ function init(){
  else if(page==='about')renderAbout();
  else if(page==='team')renderTeam();
  else if(page==='partners')renderPartners();
+ else if(page==='project')renderProject();
+ else if(page==='partner')renderPartner();
+ else if(page==='news')renderNews();
  else if(page==='blog')renderBlog();
 
  // reveals

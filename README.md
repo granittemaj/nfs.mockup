@@ -6,15 +6,19 @@ Designed to feel like a living publication people return to daily, on the Not Fo
 > Concept / proposal. Not affiliated with or endorsed by Not For Sale. All article
 > headlines and body copy are **representative placeholder content** for demonstration.
 
-## Pages
-| File | Page |
-|------|------|
-| `index.html` | Home — featured investigation, live "latest", filterable Frontlines feed, Most Read, founder's letter, social, FAQ |
-| `projects.html` | Our Projects — filterable country grid |
-| `about.html` | About — origin story, mission/vision, approach, where we work, impact |
-| `team.html` | Our Team — founding members + project directors |
-| `partners.html` | Partners — corporate partner grid |
-| `blog.html` | A sample article (reading experience: drop cap, pull quote, progress bar, related) |
+## Pages / templates
+| File | Page | Type |
+|------|------|------|
+| `index.html` | Home (publication) | page |
+| `projects.html` | Projects index (filterable) | archive |
+| `project.html` | Single project — `?c=slug` | CPT template |
+| `partners.html` | Partners index | archive |
+| `partner.html` | Single partner — `?p=slug` | CPT template |
+| `about.html` | About | page |
+| `team.html` | Our Team | page |
+| `news.html` | News index (filterable) | archive |
+| `blog.html` | Single article / explainer | CPT template |
+
 
 ## Design system
 - **Colours:** orange `#F5821F`, ink `#141210`, warm paper `#FCFAF6`
