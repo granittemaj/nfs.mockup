@@ -100,6 +100,7 @@ var FAQ=[
 ];
 var EXPLAINERS={
  "human-trafficking":{
+   cat:"Human Trafficking", tag:"What it is & how we respond",
    title:"What is human trafficking?",
    direct:"Human trafficking is the exploitation of people through force, fraud, or coercion for labor, sex, or other services. It is a form of modern-day slavery that affects millions worldwide.",
    inDepth:["Human trafficking involves the recruitment, transportation, or harboring of individuals for the purpose of exploitation. Victims can be men, women, or children and are often coerced into work under inhumane conditions or exploited sexually.","Traffickers use threats, violence, deception, and manipulation to control their victims, hiding the abuse in plain sight."],
@@ -112,6 +113,7 @@ var EXPLAINERS={
    ]
  },
  "ecocide":{
+   cat:"Ecocide", tag:"Protecting people & planet",
    title:"What is ecocide?",
    direct:"Ecocide is the large-scale destruction of ecosystems that severely harms the environment and threatens the lives and livelihoods of the people who depend on it.",
    inDepth:["Deforestation, pollution, and resource theft strip communities of the land, water, and stability they rely on. When livelihoods collapse, people are forced into desperate situations that traffickers exploit.","Environmental destruction and human exploitation are deeply linked, which is why we treat them as one fight."],
@@ -124,6 +126,7 @@ var EXPLAINERS={
    ]
  },
  "social-innovation":{
+   cat:"Social Innovation", tag:"Prevention through enterprise",
    title:"What is social innovation?",
    direct:"Social innovation means building sustainable businesses and models that empower communities rather than exploit them, creating alternatives that prevent trafficking before it starts.",
    inDepth:["Poverty and lack of opportunity fuel exploitation. Social innovation tackles that root cause by creating fair jobs, sustainable income, and community resilience.","These enterprises aren't just lifelines, they are engines of dignity and independence."],
@@ -137,20 +140,20 @@ var EXPLAINERS={
  }
 };
 var FAQLIST=[
- {q:"What is Not For Sale's mission?",a:"Not For Sale is a global NGO fighting human trafficking and environmental exploitation through survivor support, prevention, and social enterprises designed to make social impact profitable. <a href='about.html'>Learn more about our work</a>."},
- {q:"Can I report suspected human trafficking to Not For Sale?",a:"If someone is in immediate danger, contact local emergency services first. Not For Sale can point you toward the right reporting channels and anti-trafficking hotlines in your region."},
- {q:"How can I contact someone at Not For Sale?",a:"Reach us through the contact form on this site, or via the email and social channels listed in the footer."},
- {q:"How can I collaborate with Not For Sale?",a:"We partner with companies, NGOs, and individuals. See our Partners page or get in touch to explore working together."},
- {q:"How can I get involved with Not For Sale's fundraising?",a:"You can donate, become a fundraiser, or run a campaign. Our team can provide tools and guidance to help you raise funds."},
- {q:"How can I donate to Not For Sale?",a:"You can give securely online via the Donate button, or through the other methods listed on our donation page."},
- {q:"Can I donate through Venmo?",a:"Yes, in supported regions. Check the donation page for the current list of accepted payment methods."},
- {q:"How do I become a fundraiser for Not For Sale?",a:"Sign up through our fundraising platform and we'll provide a personal page plus resources to share with your network."},
- {q:"How can I update my donation and card details?",a:"Existing donors can sign in to the donation account to manage recurring gifts and update payment details."},
- {q:"Do you accept mail donations?",a:"Yes. Cheque donations can be mailed to our registered address, available on request from the team."},
- {q:"Can I donate my stocks to Not For Sale?",a:"Yes, stock and securities gifts are welcome and can be tax-efficient. Contact us to arrange a transfer."},
- {q:"Can my employer match my donation?",a:"Many employers match charitable gifts. Check with your HR team and we can provide any documentation needed."},
- {q:"Are you involved in any US-based project work?",a:"Yes. Alongside our international programmes, we support prevention and survivor work in the United States."},
- {q:"How can I keep up-to-date with Not For Sale?",a:"Subscribe to our newsletter and follow us on social media for the latest frontline reporting and updates."}
+ {cat:"About & Mission",q:"What is Not For Sale's mission?",a:"Not For Sale is a global NGO fighting human trafficking and environmental exploitation through survivor support, prevention, and social enterprises designed to make social impact profitable. <a href='about.html'>Learn more about our work</a>."},
+ {cat:"Reporting",q:"Can I report suspected human trafficking to Not For Sale?",a:"If someone is in immediate danger, contact local emergency services first. Not For Sale can point you toward the right reporting channels and anti-trafficking hotlines in your region."},
+ {cat:"About & Mission",q:"How can I contact someone at Not For Sale?",a:"Reach us through the contact form on this site, or via the email and social channels listed in the footer."},
+ {cat:"Get Involved",q:"How can I collaborate with Not For Sale?",a:"We partner with companies, NGOs, and individuals. See our Partners page or get in touch to explore working together."},
+ {cat:"Get Involved",q:"How can I get involved with Not For Sale's fundraising?",a:"You can donate, become a fundraiser, or run a campaign. Our team can provide tools and guidance to help you raise funds."},
+ {cat:"Donations",q:"How can I donate to Not For Sale?",a:"You can give securely online via the Donate button, or through the other methods listed on our donation page."},
+ {cat:"Donations",q:"Can I donate through Venmo?",a:"Yes, in supported regions. Check the donation page for the current list of accepted payment methods."},
+ {cat:"Get Involved",q:"How do I become a fundraiser for Not For Sale?",a:"Sign up through our fundraising platform and we'll provide a personal page plus resources to share with your network."},
+ {cat:"Donations",q:"How can I update my donation and card details?",a:"Existing donors can sign in to the donation account to manage recurring gifts and update payment details."},
+ {cat:"Donations",q:"Do you accept mail donations?",a:"Yes. Cheque donations can be mailed to our registered address, available on request from the team."},
+ {cat:"Donations",q:"Can I donate my stocks to Not For Sale?",a:"Yes, stock and securities gifts are welcome and can be tax-efficient. Contact us to arrange a transfer."},
+ {cat:"Donations",q:"Can my employer match my donation?",a:"Many employers match charitable gifts. Check with your HR team and we can provide any documentation needed."},
+ {cat:"About & Mission",q:"Are you involved in any US-based project work?",a:"Yes. Alongside our international programmes, we support prevention and survivor work in the United States."},
+ {cat:"Updates",q:"How can I keep up-to-date with Not For Sale?",a:"Subscribe to our newsletter and follow us on social media for the latest frontline reporting and updates."}
 ];
 var COUNTRIES=[
  ["Argentina","Americas"],["Bolivia","Americas"],["Brazil","Americas"],["Canada","Americas"],
@@ -194,16 +197,43 @@ var PARTNERS=[
 /* =========================================================================
    SHARED CHROME
    ========================================================================= */
-var NAVITEMS=[["Home","index.html","home"],["Our Projects","projects.html","projects"],["About","about.html","about"],["Our Team","team.html","team"],["Partners","partners.html","partners"],["News","news.html","news"]];
+var NAV=[
+ {label:"Home",href:"index.html",page:"home"},
+ {label:"Our Projects",href:"projects.html",page:"projects"},
+ {label:"Causes",group:"causes",children:[
+   {label:"Human Trafficking",href:"explainer.html?t=human-trafficking",sub:"What it is & how we respond"},
+   {label:"Social Innovation",href:"explainer.html?t=social-innovation",sub:"Prevention through enterprise"},
+   {label:"Ecocide",href:"explainer.html?t=ecocide",sub:"Protecting people & planet"},
+   {divider:true},
+   {label:"FAQ",href:"faq.html",sub:"Answers to common questions"}
+ ]},
+ {label:"About",group:"about",children:[
+   {label:"About Us",href:"about.html",sub:"Our story & mission"},
+   {label:"Our Team",href:"team.html",sub:"Founders & directors"},
+   {label:"Our Partners",href:"partners.html",sub:"Companies fighting with us"}
+ ]},
+ {label:"News",href:"news.html",page:"news"}
+];
+var GROUP_PAGES={causes:["explainer","faq"],about:["about","team","partners"]};
 function injectHeader(page){
- var links=NAVITEMS.map(function(n){return '<a href="'+n[1]+'"'+(n[2]===page?' class="active"':'')+'>'+n[0]+'</a>';}).join('');
- var mlinks=NAVITEMS.map(function(n){return '<a href="'+n[1]+'"'+(n[2]===page?' class="active"':'')+'>'+n[0]+'</a>';}).join('');
- var html='<div class="wrap nav"><div class="left">'+
-   '<a class="brand" href="index.html"><span class="flame">'+FLAME+'</span><span class="name">Not For Sale</span></a>'+
-   '<nav class="nav-links">'+links+'</nav></div>'+
+ var center=NAV.map(function(n){
+   if(n.children){
+     var active=(GROUP_PAGES[n.group]||[]).indexOf(page)>=0;
+     var dd=n.children.map(function(c){return c.divider?'<div class="divider"></div>':'<a href="'+c.href+'"><span class="lk">'+c.label+'</span>'+(c.sub?'<small>'+c.sub+'</small>':'')+'</a>';}).join('');
+     return '<div class="nav-item"><button class="nav-trigger'+(active?' active':'')+'" aria-haspopup="true">'+n.label+'<span class="car"></span></button><div class="dropdown">'+dd+'</div></div>';
+   }
+   return '<div class="nav-item"><a class="nav-link'+(n.page===page?' active':'')+'" href="'+n.href+'">'+n.label+'</a></div>';
+ }).join('');
+ var mob=NAV.map(function(n){
+   if(n.children){return '<div class="mm-group">'+n.label+'</div>'+n.children.filter(function(c){return !c.divider;}).map(function(c){return '<a class="sub" href="'+c.href+'">'+c.label+'</a>';}).join('');}
+   return '<a href="'+n.href+'"'+(n.page===page?' class="active"':'')+'>'+n.label+'</a>';
+ }).join('');
+ var html='<div class="wrap nav">'+
+   '<div class="left"><a class="brand" href="index.html"><span class="flame">'+FLAME+'</span><span class="name">Not For Sale</span></a></div>'+
+   '<div class="center"><nav class="nav-links">'+center+'</nav></div>'+
    '<div class="right"><a class="btn btn-ink" href="#">Donate</a>'+
-   '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div>'+
-   '<div class="mobile-menu" id="mobileMenu">'+mlinks+'<a class="btn btn-orange" href="#">Donate</a></div>';
+   '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>'+
+   '</div><div class="mobile-menu" id="mobileMenu">'+mob+'<a class="btn btn-orange" href="#">Donate</a></div>';
  var h=document.getElementById('site-header'); if(h){var el=document.createElement('header');el.id='hdr';el.innerHTML=html;h.replaceWith(el);}
 }
 function injectNewsletter(){
@@ -316,19 +346,52 @@ function renderPartner(){
  if(rel){var more=PARTNERS.filter(function(p){return slug(p.name)!==sl;}).slice(0,3);
    rel.innerHTML=more.map(function(p){return '<a class="logo" href="partner.html?p='+slug(p.name)+'">'+scene("partner-"+p.name)+'<div class="wm">'+p.name+(p.sub?'<small>'+p.sub+'</small>':'')+'</div></a>';}).join('');}
 }
+function bindAccordion(host){
+ host.querySelectorAll('.qa').forEach(function(qa){var a=qa.querySelector('.a');
+   if(qa.classList.contains('open'))a.style.maxHeight=a.scrollHeight+'px';
+   qa.querySelector('.q').onclick=function(){var open=qa.classList.contains('open');
+     host.querySelectorAll('.qa').forEach(function(o){o.classList.remove('open');o.querySelector('.a').style.maxHeight=null;});
+     if(!open){qa.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}};});
+}
 function renderExplainer(){
  var t=getParam('t')||'human-trafficking';
  var d=EXPLAINERS[t]||EXPLAINERS['human-trafficking'];
+ var ACC={"human-trafficking":"#c46f49","social-innovation":"#4f8e92","ecocide":"#5b7747"};
+ var root=el('exRoot'); if(root)root.style.setProperty('--accent',ACC[t]||'#F5821F');
  if(document.title)document.title=d.title+' — Not For Sale';
+ var k=el('exKicker'); if(k)k.innerHTML='<span class="dash"></span>'+d.cat;
  var h=el('exTitle'); if(h)h.textContent=d.title;
  var da=el('exDirect'); if(da)da.textContent=d.direct;
- var img=el('exImg'); if(img)img.insertAdjacentHTML('afterbegin',scene(d.title,"Human Trafficking"));
+ var cov=el('exCover'); if(cov)cov.insertAdjacentHTML('afterbegin',scene(d.title,d.cat));
  var idp=el('exInDepth'); if(idp)idp.innerHTML=d.inDepth.map(function(p){return '<p>'+p+'</p>';}).join('');
- var sol=el('exSolutions'); if(sol)sol.innerHTML=d.solutions.map(function(s,i){return '<div class="solution"><div class="num">'+("0"+(i+1)).slice(-2)+'</div><p>'+s+'</p></div>';}).join('');
- var sum=el('exSummary'); if(sum)sum.innerHTML='<p>'+d.summary+'</p>';
+ var st=el('exSteps'); if(st)st.innerHTML=d.solutions.map(function(s,i){return '<div class="ex-step"><div class="n">'+("0"+(i+1)).slice(-2)+'</div><p>'+s+'</p></div>';}).join('');
+ var sm=el('exSummary'); if(sm)sm.innerHTML='<p>'+d.summary+'</p>';
  buildFAQ(el('exRelated'),d.related,'+');
+ var more=el('exMore');
+ if(more){var keys=Object.keys(EXPLAINERS).filter(function(x){return x!==t;});
+   more.innerHTML=keys.map(function(x){var e=EXPLAINERS[x];return '<a class="ex-mc" href="explainer.html?t='+x+'">'+scene(e.title,e.cat)+'<div class="t">'+e.cat+'<small>'+e.tag+'</small></div></a>';}).join('');}
 }
-function renderFaq(){ buildFAQ(el('faqList'),FAQLIST,'+'); }
+function renderFaq(){
+ var cats=["All"]; FAQLIST.forEach(function(f){if(cats.indexOf(f.cat)<0)cats.push(f.cat);});
+ var state={cat:"All",q:""};
+ function cnt(c){return c==="All"?FAQLIST.length:FAQLIST.filter(function(f){return f.cat===c;}).length;}
+ var nav=el('catNav');
+ if(nav){nav.innerHTML=cats.map(function(c){return '<button data-c="'+c+'" class="'+(c==="All"?'on':'')+'">'+c+'<span class="ct">'+cnt(c)+'</span></button>';}).join('');
+   nav.querySelectorAll('button').forEach(function(b){b.onclick=function(){state.cat=b.dataset.c;nav.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});draw();};});}
+ var search=el('faqSearch'); if(search)search.addEventListener('input',function(){state.q=this.value.toLowerCase().trim();draw();});
+ function item(f){return '<div class="qa"><div class="q">'+f.q+'<span class="ic">+</span></div><div class="a"><p>'+f.a+'</p></div></div>';}
+ function draw(){
+   var list=FAQLIST.filter(function(f){return (state.cat==="All"||f.cat===state.cat)&&(!state.q||(f.q+' '+f.a).toLowerCase().indexOf(state.q)>=0);});
+   var host=el('faqList'); if(!host)return;
+   if(!list.length){host.innerHTML='<div class="help-empty">No questions match “'+state.q+'”. Try a different search.</div>';return;}
+   var html='';
+   if(state.cat==="All"&&!state.q){
+     cats.slice(1).forEach(function(c){var items=list.filter(function(f){return f.cat===c;});if(items.length)html+='<div class="grouplabel">'+c+'</div>'+items.map(item).join('');});
+   } else { html=list.map(item).join(''); }
+   host.innerHTML=html; bindAccordion(host);
+ }
+ draw();
+}
 function renderNews(){
  var NEWS=[FEAT].concat(LATEST).concat(ARTS);
  var active="All";

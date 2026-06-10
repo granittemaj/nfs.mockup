@@ -13,36 +13,45 @@
 <div id="bar"></div>
 <div id="site-header"></div>
 
-<div class="wrap">
-  <section class="exhero">
+<div class="wrap ex" id="exRoot">
+  <section class="ex-hero">
     <div class="fade">
-      <div class="kicker"><span class="dash"></span>FAQ</div>
+      <div class="kicker" id="exKicker"><span class="dash"></span>Cause</div>
       <h1 id="exTitle">What is human trafficking?</h1>
-      <div class="da"><div class="lab">Direct answer</div><p id="exDirect"></p></div>
     </div>
-    <div class="img fade" id="exImg"></div>
-  </section>
-
-  <section class="twocol">
-    <div class="sub fade">In-Depth Explanation</div>
-    <div class="body fade" id="exInDepth"></div>
-  </section>
-
-  <section class="solutions-sec fade">
-    <h2>How Not For Sale Offers a Solution</h2>
-    <div class="solutions" id="exSolutions"></div>
-  </section>
-
-  <section class="twocol">
-    <div class="sub fade">In Summary</div>
-    <div class="body fade" id="exSummary"></div>
-  </section>
-
-  <section class="exrelated fade">
-    <div class="twocol">
-      <div class="sub">Related FAQs</div>
-      <div id="exRelated"></div>
+    <div class="ex-answer fade">
+      <div class="lab">The short answer</div>
+      <p id="exDirect"></p>
     </div>
+  </section>
+
+  <div class="ex-cover fade" id="exCover"></div>
+
+  <section class="ex-block">
+    <div class="label fade">In depth</div>
+    <div class="prose fade" id="exInDepth"></div>
+  </section>
+
+  <section class="ex-steps">
+    <div class="head fade">How Not For Sale responds</div>
+    <div class="grid fade" id="exSteps"></div>
+  </section>
+
+  <section class="ex-summary fade">
+    <div class="mark"><svg viewBox="0 0 24 24"><path d="M12 2c1.2 4.2-3 5.2-3 9.2a3 3 0 0 0 6 0c0-1.6-.8-2.7-1-3.8 2 .9 3.2 3 3.2 5.1a6.4 6.4 0 1 1-12.4 0C4.8 7 9.8 6 12 2z" fill="#fff"/></svg></div>
+    <div><div class="lab">In summary</div><div id="exSummary"></div></div>
+  </section>
+
+  <section class="ex-related">
+    <div class="ex-block" style="padding-bottom:0;border:none">
+      <div class="label fade">Related questions</div>
+      <div class="fade" id="exRelated"></div>
+    </div>
+  </section>
+
+  <section class="ex-related">
+    <div class="head fade" style="font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.8vw,32px);margin-bottom:18px">Keep exploring</div>
+    <div class="ex-morecards fade" id="exMore"></div>
   </section>
 </div>
 
